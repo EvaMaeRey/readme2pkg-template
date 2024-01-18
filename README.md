@@ -1,45 +1,51 @@
 
-  - [*README: Below, is readme that provides steps for building a
-    package. This readme acts as a checklist, and control document as
-    functions used in package building are included. 🚧 ✅
-    *](#readme-below-is-readme-that-provides-steps-for-building-a-package-this-readme-acts-as-a-checklist-and-control-document-as-functions-used-in-package-building-are-included---)
+  - [*To the reader*](#to-the-reader)
   - [Part 0. Proposal](#part-0-proposal)
   - [Part I. Work out functionality ✅](#part-i-work-out-functionality-)
-  - [Try it out](#try-it-out)
+      - [Try it out](#try-it-out)
   - [Part II. Packaging and documentation 🚧
     ✅](#part-ii-packaging-and-documentation--)
       - [Phase 1. Minimal working
         package](#phase-1-minimal-working-package)
-          - [Created files for package archetecture.
-            ✅](#created-files-for-package-archetecture-)
-          - [Moved functions R folder? ✅](#moved-functions-r-folder-)
-          - [Added roxygen skeleton? ✅](#added-roxygen-skeleton-)
-          - [Managed dependencies ? ✅](#managed-dependencies--)
-          - [Chosen a license? ✅](#chosen-a-license-)
-          - [Run `devtools::check()` and addressed errors?
-            ✅](#run-devtoolscheck-and-addressed-errors-)
-          - [Build package 🚧](#build-package-)
-          - [Make aspirational part of readme real.
-            🚧](#make-aspirational-part-of-readme-real-)
-          - [Add lifecycle badge
-            (experimental)](#add-lifecycle-badge-experimental)
-      - [Phase 2: Listen & iterate 🚧](#phase-2-listen--iterate-)
+          - [Bit A. Created files for package archetecture, running
+            `devtools::create(".")` in interactive session. 🚧
+            ✅](#bit-a-created-files-for-package-archetecture-running-devtoolscreate-in-interactive-session--)
+          - [Bit B. Added roxygen skeleton? 🚧
+            ✅](#bit-b-added-roxygen-skeleton--)
+          - [Bit C. Managed dependencies ? 🚧
+            ✅](#bit-c-managed-dependencies---)
+          - [Bit D. Moved functions R folder? 🚧
+            ✅](#bit-d-moved-functions-r-folder--)
+          - [Bit E. Run `devtools::check()` and addressed errors. 🚧
+            ✅](#bit-e-run-devtoolscheck-and-addressed-errors--)
+          - [Bit F. Build package 🚧 ✅](#bit-f-build-package--)
+          - [Bit G. Write and test traditional README that uses built
+            package. 🚧
+            ✅](#bit-g-write-and-test-traditional-readme-that-uses-built-package--)
+          - [Bit H. Chosen a license? 🚧 ✅](#bit-h-chosen-a-license--)
+          - [Bit I. Add lifecycle badge
+            (experimental)](#bit-i-add-lifecycle-badge-experimental)
+      - [Phase 2: Listen & iterate 🚧 ✅](#phase-2-listen--iterate--)
       - [Phase 3: Let things settle](#phase-3-let-things-settle)
-          - [Settle on examples. Put them in the roxygen skeleton and
-            readme.
-            🚧](#settle-on-examples-put-them-in-the-roxygen-skeleton-and-readme-)
-          - [Written formal tests of functions?
-            🚧](#written-formal-tests-of-functions-)
-          - [Have you worked added a description and author information
-            in the DESCRIPTION file?
-            🚧](#have-you-worked-added-a-description-and-author-information-in-the-description-file-)
-          - [Addressed *all* notes, warnings and errors.
-            🚧](#addressed-all-notes-warnings-and-errors-)
-      - [Promote to wider audience…](#promote-to-wider-audience)
-          - [Package website built? 🚧](#package-website-built-)
-          - [Package website deployed? 🚧](#package-website-deployed-)
-      - [Phase 3: Harden/commit](#phase-3-hardencommit)
-          - [Submit to CRAN? Or don’t. 🚧](#submit-to-cran-or-dont-)
+          - [Bit A. Settle on examples. Put them in the roxygen skeleton
+            and readme. 🚧
+            ✅](#bit-a-settle-on-examples-put-them-in-the-roxygen-skeleton-and-readme--)
+          - [Bit B. Written formal tests of functions and save to test
+            that folders 🚧
+            ✅](#bit-b-written-formal-tests-of-functions-and-save-to-test-that-folders--)
+          - [Bit C. Added a description and author information in the
+            DESCRIPTION file 🚧
+            ✅](#bit-c-added-a-description-and-author-information-in-the-description-file--)
+          - [Bit D. Addressed *all* notes, warnings and errors. 🚧
+            ✅](#bit-d-addressed-all-notes-warnings-and-errors--)
+      - [Phase 4. Promote to wider
+        audience…](#phase-4-promote-to-wider-audience)
+          - [Bit A. Package website built? 🚧
+            ✅](#bit-a-package-website-built--)
+          - [Bit B. Package website deployed? 🚧
+            ✅](#bit-b-package-website-deployed--)
+      - [Phase 5: Harden/commit](#phase-5-hardencommit)
+          - [Submit to CRAN? 🚧 ✅](#submit-to-cran--)
   - [Appendix: Reports, Environment](#appendix-reports-environment)
       - [Description file extract](#description-file-extract)
       - [Environment](#environment)
@@ -48,84 +54,87 @@
         package)](#non-developer-introduction-to-package-and-test-of-installed-package)
       - [Example using package](#example-using-package)
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+# *To the reader*
 
-# *README: Below, is readme that provides steps for building a package. This readme acts as a checklist, and control document as functions used in package building are included. 🚧 ✅ *
+Welcome to the R package building helper *readme2pkg.template*\!
+
+Below, is a readme that provides steps for building a package. This
+readme acts as a worksheet, checklist, and control document as functions
+used in package building are included within.
+
+We’ll use the `{readme2pkg}` helper package to send code chunks to
+different directories in the package.
+
+To install `{readme2pkg}`:
+
+``` 
+
+remotes::install.github("EvaMaeRey/readme2pkg")
+```
 
 # Part 0. Proposal
 
-Proposing the {xxxx} package\! 🦄 (typical package introduction write up;
-but actually aspirational)
-
-<!-- badges: start -->
-
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-<!-- badges: end -->
+Proposing the {xxxx} package\! 🦄
+<!-- (typical package introduction write up; but actually aspirational) -->
 
 The goal of {xxxx} is to make … easier.
 
-Without the package, we live in this effort-ful world 🏋:
+Without the package, we live in the effort-ful world that follows 🏋:
 
-With the package, we’ll live in a different world (🦄 🦄 🦄) where the task
-is a snap 🫰:
+``` r
+x <- 4
+
+2*x
+```
+
+With the {xxxx} package, we’ll live in a different world (🦄 🦄 🦄) where
+the task is a snap 🫰:
 
 Proposed API:
 
 ``` 
 
-library(mypackage)
+library(xxxxx)
 
-myfunction(mtcars)
+xxxxx::times_two(x = 4)
 ```
 
 # Part I. Work out functionality ✅
 
-Have some functions that you’d like to package up *like the below from
-Hester’s ‘note’ example*
+Here is a function that will do some work…
 
 ``` r
-myfunction <- function(x){
+times_two <- function(x){
   
-  x^2
+  x*2
   
 }
 ```
 
-# Try it out
+## Try it out
 
 ``` r
-myfunction(5)
+times_two(4)
 ```
 
 # Part II. Packaging and documentation 🚧 ✅
 
 ## Phase 1. Minimal working package
 
-### Created files for package archetecture. ✅
+### Bit A. Created files for package archetecture, running `devtools::create(".")` in interactive session. 🚧 ✅
 
 ``` r
 devtools::create(".")
 ```
 
-### Moved functions R folder? ✅
-
-``` r
-knitr::knit_code$get() |> names()
-```
-
-Use new {readme2pkg} function to do this from readme…
-
-``` r
-readme2pkg::chunk_to_r("myfunction")
-```
-
-### Added roxygen skeleton? ✅
+### Bit B. Added roxygen skeleton? 🚧 ✅
 
 Use a roxygen skeleton for auto documentation and making sure proposed
-functions are *exported*.
+functions are *exported*. Generally, early on, I don’t do much
+(anything) in terms of filling in the skeleton for documentation,
+because things may change.
 
-### Managed dependencies ? ✅
+### Bit C. Managed dependencies ? 🚧 ✅
 
 Package dependencies managed, i.e. `depend::function()` in proposed
 functions and declared in the DESCRIPTION
@@ -134,83 +143,101 @@ functions and declared in the DESCRIPTION
 usethis::use_package("ggplot2")
 ```
 
-### Chosen a license? ✅
+### Bit D. Moved functions R folder? 🚧 ✅
+
+Use new {readme2pkg} function to do this from readme…
 
 ``` r
-usethis::use_mit_license()
+readme2pkg::chunk_to_r("times_two")
 ```
 
-### Run `devtools::check()` and addressed errors? ✅
+### Bit E. Run `devtools::check()` and addressed errors. 🚧 ✅
 
 ``` r
 devtools::check(pkg = ".")
 ```
 
-### Build package 🚧
+### Bit F. Build package 🚧 ✅
 
 ``` r
 devtools::build()
 ```
 
-You need to do this before Part 0 in this document will work.
+### Bit G. Write and test traditional README that uses built package. 🚧 ✅
 
-### Make aspirational part of readme real. 🚧
+The goal of the {xxxx} package is to …
 
-At this point, you could change eval chunk options to TRUE. You can
-remove the 🦄 emoji and perhaps replace it with construction site if you
-are still uncertain of the API, and want to highlight that it is subject
-to change.
+Install package with:
 
-### Add lifecycle badge (experimental)
+    remotes::installgithub("EvaMaeRey/readme2pkg.template")
+
+Then…
+
+``` r
+library(readme2pkg.template)  ##<< change to your package name here
+times_two(10)
+```
+
+### Bit H. Chosen a license? 🚧 ✅
+
+``` r
+usethis::use_mit_license()
+```
+
+### Bit I. Add lifecycle badge (experimental)
 
 ``` r
 usethis::use_lifecycle_badge("experimental")
 ```
 
-## Phase 2: Listen & iterate 🚧
+## Phase 2: Listen & iterate 🚧 ✅
 
 Try to get feedback from experts on API, implementation, default
 decisions. Is there already work that solves this problem?
 
 ## Phase 3: Let things settle
 
-### Settle on examples. Put them in the roxygen skeleton and readme. 🚧
+### Bit A. Settle on examples. Put them in the roxygen skeleton and readme. 🚧 ✅
 
-### Written formal tests of functions? 🚧
+### Bit B. Written formal tests of functions and save to test that folders 🚧 ✅
 
 That would look like this…
 
 ``` r
 library(testthat)
 
-test_that("calc frequency works", {
-  expect_equal(calc_frequency("A", 0), 440)
-  expect_equal(calc_frequency("A", -1), 220)
+test_that("calc times 2 works", {
+  expect_equal(times_two(4), 8)
+  expect_equal(times_two(5), 10)
   
 })
 ```
 
 ``` r
-readme2pkg::chunk_to_tests_testthat("test_calc_frequency_works")
+readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 ```
 
-### Have you worked added a description and author information in the DESCRIPTION file? 🚧
+### Bit C. Added a description and author information in the DESCRIPTION file 🚧 ✅
 
-### Addressed *all* notes, warnings and errors. 🚧
+### Bit D. Addressed *all* notes, warnings and errors. 🚧 ✅
 
-## Promote to wider audience…
+## Phase 4. Promote to wider audience…
 
-### Package website built? 🚧
+### Bit A. Package website built? 🚧 ✅
 
-### Package website deployed? 🚧
+### Bit B. Package website deployed? 🚧 ✅
 
-## Phase 3: Harden/commit
+## Phase 5: Harden/commit
 
-### Submit to CRAN? Or don’t. 🚧
+### Submit to CRAN? 🚧 ✅
 
 # Appendix: Reports, Environment
 
 ## Description file extract
+
+``` r
+# readlines(Description)
+```
 
 ## Environment
 
