@@ -234,22 +234,5 @@ devtools::check(pkg = ".")
 
 
 
-## Non-developer introduction to package (and test of installed package)
-
-The goal of the {xxx} package 
-
-To install the dev version use the following:
-
-```
-remotes::install_github("owner/repo") # 
-```  
-
-## Example using package
-
-
-```{r, eval = F}
-library(mypackage)
-mypackage:::myfunction(mtcars)
-```
 
 

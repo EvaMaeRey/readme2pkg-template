@@ -50,9 +50,6 @@
       - [Edit Description file](#edit-description-file)
       - [Environment](#environment)
       - [`devtools::check()` report](#devtoolscheck-report)
-      - [Non-developer introduction to package (and test of installed
-        package)](#non-developer-introduction-to-package-and-test-of-installed-package)
-      - [Example using package](#example-using-package)
 
 # *To the reader*
 
@@ -267,19 +264,4 @@ devtools::check(pkg = ".")
 #> Error in `package_file()`:
 #> ! Could not find package root.
 #> ℹ Is '.' inside a package?
-```
-
-## Non-developer introduction to package (and test of installed package)
-
-The goal of the {xxx} package
-
-To install the dev version use the following:
-
-    remotes::install_github("owner/repo") # 
-
-## Example using package
-
-``` r
-library(mypackage)
-mypackage:::myfunction(mtcars)
 ```
