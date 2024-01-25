@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  eval = F
+  eval = T
 )
 ```
 
@@ -82,11 +82,12 @@ times_two <- function(x){
 times_two(4)
 ```
 
+
 # Part II. Packaging and documentation  🚧 ✅ 
 
 ## Phase 1. Minimal working package
 
-### Bit A. Created files for package archetecture, running `devtools::create(".")` in interactive session. 🚧 ✅
+### Bit A. Created package archetecture, running `devtools::create(".")` in interactive session. 🚧 ✅
 
 
 ```{r, eval = F}
@@ -101,7 +102,7 @@ Use a roxygen skeleton for auto documentation and making sure proposed functions
 
 Package dependencies managed, i.e. `depend::function()` in proposed functions and declared in the DESCRIPTION
 
-```{r}
+```{r, eval = F}
 usethis::use_package("ggplot2")
 ```
 
@@ -118,18 +119,18 @@ readme2pkg::chunk_to_r("times_two")
 
 ### Bit E. Run `devtools::check()` and addressed errors. 🚧 ✅
 
-```{r, results='hide', error=T}
+```{r, eval = F}
 devtools::check(pkg = ".")
 ```
 
 ### Bit F. Build package 🚧 ✅
 
-```{r}
+```{r, eval = F}
 devtools::build()
 ```
 
 
-### Bit G. Write and test traditional README that uses built package. 🚧 ✅ 
+### Bit G. Write traditional README that uses built package (also serves as a test of build. 🚧 ✅ 
 
 The goal of the {xxxx} package is to ...
 
@@ -139,22 +140,26 @@ Install package with:
 remotes::installgithub("EvaMaeRey/readme2pkg.template")
 ```
 
-Then...
+Once functions are exported you can remove go to two colons, and when things are are really finalized, then go without colons (and rearrange your readme...)
 
-```{r}
-library(readme2pkg.template)  ##<< change to your package name here
-times_two(10)
+```{r, eval = F}
+library(mypacakge)  ##<< change to your package name here
+mypacakge:::times_two(10)
 ```
+
+
+
+
 ### Bit H. Chosen a license? 🚧 ✅
 
 
-```{r}
+```{r, eval = F}
 usethis::use_mit_license()
 ```
 
 ### Bit I. Add lifecycle badge (experimental)
 
-```{r}
+```{r, eval = F}
 usethis::use_lifecycle_badge("experimental")
 ```
 
@@ -173,7 +178,7 @@ Try to get feedback from experts on API, implementation, default decisions.  Is 
 
 That would look like this...
 
-```{r test_calc_times_two_works}
+```{r test_calc_times_two_works, eval = F}
 library(testthat)
 
 test_that("calc times 2 works", {
@@ -184,7 +189,7 @@ test_that("calc times 2 works", {
 ```
 
 
-```{r}
+```{r, eval = F}
 readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 ```
 
@@ -205,10 +210,11 @@ readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 
 # Appendix: Reports, Environment
 
-## Description file extract
+## Edit Description file
 
-```{r}
-# readlines(Description)
+```{r, eval = F}
+description_path <- paste0(getwd(), "/DESCRIPTION")
+rstudioapi::documentOpen(description_path)
 ```
 
 ## Environment
@@ -240,9 +246,10 @@ remotes::install_github("owner/repo") #
 
 ## Example using package
 
+
 ```{r, eval = F}
 library(mypackage)
-myfunction(mtcars)
+mypackage:::myfunction(mtcars)
 ```
 
 

@@ -7,9 +7,9 @@
     ✅](#part-ii-packaging-and-documentation--)
       - [Phase 1. Minimal working
         package](#phase-1-minimal-working-package)
-          - [Bit A. Created files for package archetecture, running
+          - [Bit A. Created package archetecture, running
             `devtools::create(".")` in interactive session. 🚧
-            ✅](#bit-a-created-files-for-package-archetecture-running-devtoolscreate-in-interactive-session--)
+            ✅](#bit-a-created-package-archetecture-running-devtoolscreate-in-interactive-session--)
           - [Bit B. Added roxygen skeleton? 🚧
             ✅](#bit-b-added-roxygen-skeleton--)
           - [Bit C. Managed dependencies ? 🚧
@@ -19,9 +19,9 @@
           - [Bit E. Run `devtools::check()` and addressed errors. 🚧
             ✅](#bit-e-run-devtoolscheck-and-addressed-errors--)
           - [Bit F. Build package 🚧 ✅](#bit-f-build-package--)
-          - [Bit G. Write and test traditional README that uses built
-            package. 🚧
-            ✅](#bit-g-write-and-test-traditional-readme-that-uses-built-package--)
+          - [Bit G. Write traditional README that uses built package
+            (also serves as a test of build. 🚧
+            ✅](#bit-g-write-traditional-readme-that-uses-built-package-also-serves-as-a-test-of-build--)
           - [Bit H. Chosen a license? 🚧 ✅](#bit-h-chosen-a-license--)
           - [Bit I. Add lifecycle badge
             (experimental)](#bit-i-add-lifecycle-badge-experimental)
@@ -47,7 +47,7 @@
       - [Phase 5: Harden/commit](#phase-5-hardencommit)
           - [Submit to CRAN? 🚧 ✅](#submit-to-cran--)
   - [Appendix: Reports, Environment](#appendix-reports-environment)
-      - [Description file extract](#description-file-extract)
+      - [Edit Description file](#edit-description-file)
       - [Environment](#environment)
       - [`devtools::check()` report](#devtoolscheck-report)
       - [Non-developer introduction to package (and test of installed
@@ -85,6 +85,7 @@ Without the package, we live in the effort-ful world that follows 🏋:
 x <- 4
 
 2*x
+#> [1] 8
 ```
 
 With the {xxxx} package, we’ll live in a different world (🦄 🦄 🦄) where
@@ -115,13 +116,14 @@ times_two <- function(x){
 
 ``` r
 times_two(4)
+#> [1] 8
 ```
 
 # Part II. Packaging and documentation 🚧 ✅
 
 ## Phase 1. Minimal working package
 
-### Bit A. Created files for package archetecture, running `devtools::create(".")` in interactive session. 🚧 ✅
+### Bit A. Created package archetecture, running `devtools::create(".")` in interactive session. 🚧 ✅
 
 ``` r
 devtools::create(".")
@@ -163,7 +165,7 @@ devtools::check(pkg = ".")
 devtools::build()
 ```
 
-### Bit G. Write and test traditional README that uses built package. 🚧 ✅
+### Bit G. Write traditional README that uses built package (also serves as a test of build. 🚧 ✅
 
 The goal of the {xxxx} package is to …
 
@@ -171,11 +173,13 @@ Install package with:
 
     remotes::installgithub("EvaMaeRey/readme2pkg.template")
 
-Then…
+Once functions are exported you can remove go to two colons, and when
+things are are really finalized, then go without colons (and rearrange
+your readme…)
 
 ``` r
-library(readme2pkg.template)  ##<< change to your package name here
-times_two(10)
+library(mypacakge)  ##<< change to your package name here
+mypacakge:::times_two(10)
 ```
 
 ### Bit H. Chosen a license? 🚧 ✅
@@ -233,10 +237,11 @@ readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 
 # Appendix: Reports, Environment
 
-## Description file extract
+## Edit Description file
 
 ``` r
-# readlines(Description)
+description_path <- paste0(getwd(), "/DESCRIPTION")
+rstudioapi::documentOpen(description_path)
 ```
 
 ## Environment
@@ -246,12 +251,22 @@ Here I just want to print the packages and the versions
 ``` r
 all <- sessionInfo() |> print() |> capture.output()
 all[11:17]
+#> [1] ""                                                                         
+#> [2] "attached base packages:"                                                  
+#> [3] "[1] stats     graphics  grDevices utils     datasets  methods   base     "
+#> [4] ""                                                                         
+#> [5] "loaded via a namespace (and not attached):"                               
+#> [6] " [1] compiler_4.2.2  fastmap_1.1.1   cli_3.6.1       tools_4.2.2    "     
+#> [7] " [5] htmltools_0.5.4 rstudioapi_0.14 yaml_2.3.7      rmarkdown_2.20 "
 ```
 
 ## `devtools::check()` report
 
 ``` r
 devtools::check(pkg = ".")
+#> Error in `package_file()`:
+#> ! Could not find package root.
+#> ℹ Is '.' inside a package?
 ```
 
 ## Non-developer introduction to package (and test of installed package)
@@ -266,5 +281,5 @@ To install the dev version use the following:
 
 ``` r
 library(mypackage)
-myfunction(mtcars)
+mypackage:::myfunction(mtcars)
 ```
