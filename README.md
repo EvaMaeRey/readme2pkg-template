@@ -45,7 +45,7 @@
           - [Bit B. Package website deployed? 🚧
             ✅](#bit-b-package-website-deployed--)
       - [Phase 5: Harden/commit](#phase-5-hardencommit)
-          - [Submit to CRAN? 🚧 ✅](#submit-to-cran--)
+          - [Submit to CRAN/RUniverse? 🚧 ✅](#submit-to-cranruniverse--)
   - [Appendix: Reports, Environment](#appendix-reports-environment)
       - [Edit Description file](#edit-description-file)
       - [Environment](#environment)
@@ -230,15 +230,14 @@ readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 
 ## Phase 5: Harden/commit
 
-### Submit to CRAN? 🚧 ✅
+### Submit to CRAN/RUniverse? 🚧 ✅
 
 # Appendix: Reports, Environment
 
 ## Edit Description file
 
 ``` r
-description_path <- paste0(getwd(), "/DESCRIPTION")
-rstudioapi::documentOpen(description_path)
+readLines("DESCRIPTION")
 ```
 
 ## Environment
