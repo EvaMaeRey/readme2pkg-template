@@ -128,10 +128,10 @@ devtools::check(pkg = ".")
 
 devtools check will document the functions for you. 
 
-### Bit E. [Install](https://r-pkgs.org/whole-game.html#install) and restart package 🚧 ✅
+### Bit E. [Install](https://r-pkgs.org/whole-game.html#install) and restart your brand new package!! 🚧 ✅
 
 ```{r, eval = F}
-devtools::install(pkg = ".")
+devtools::install(pkg = ".", upgrade = "never")
 ```
 
 

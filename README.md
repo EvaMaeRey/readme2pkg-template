@@ -129,10 +129,10 @@ devtools::check(pkg = ".")
 
 devtools check will document the functions for you.
 
-### Bit E. [Install](https://r-pkgs.org/whole-game.html#install) and restart package 🚧 ✅
+### Bit E. [Install](https://r-pkgs.org/whole-game.html#install) and restart your brand new package\!\! 🚧 ✅
 
 ``` r
-devtools::install(pkg = ".")
+devtools::install(pkg = ".", upgrade = "never")
 ```
 
 ### Bit F. Write traditional README that uses built package (also serves as a test of build). 🚧 ✅
@@ -158,9 +158,9 @@ mypackage:::times_two(10)
 usethis::use_lifecycle_badge("experimental")
 ```
 
-### Bit H. Compile README.Rmd
+### Bit H. Compile README.Rmd 🚧 ✅
 
-### Bit I. Push to github.
+### Bit I. Push to github. 🚧 ✅
 
 RStudio: Console/Terminal/RMarkdown/Jobs:
 
