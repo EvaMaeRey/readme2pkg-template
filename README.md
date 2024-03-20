@@ -7,49 +7,18 @@
     ✅](#part-ii-packaging-and-documentation--)
       - [Phase 1. Minimal working
         package](#phase-1-minimal-working-package)
-          - [Bit A. Created package archetecture, running
-            `devtools::create(".")` in interactive session. 🚧
-            ✅](#bit-a-created-package-archetecture-running-devtoolscreate-in-interactive-session--)
-          - [Bit B. Added roxygen skeleton? 🚧
-            ✅](#bit-b-added-roxygen-skeleton--)
-          - [Bit C. Managed dependencies ? 🚧
-            ✅](#bit-c-managed-dependencies---)
-          - [Bit D. Moved functions R folder? 🚧
-            ✅](#bit-d-moved-functions-r-folder--)
-          - [Bit E. Run `devtools::check()` and addressed errors. 🚧
-            ✅](#bit-e-run-devtoolscheck-and-addressed-errors--)
-          - [Bit F. Build package 🚧 ✅](#bit-f-build-package--)
-          - [Bit G. Write traditional README that uses built package
-            (also serves as a test of build. 🚧
-            ✅](#bit-g-write-traditional-readme-that-uses-built-package-also-serves-as-a-test-of-build--)
-          - [Bit H. Chosen a license? 🚧 ✅](#bit-h-chosen-a-license--)
-          - [Bit I. Add lifecycle badge
-            (experimental)](#bit-i-add-lifecycle-badge-experimental)
       - [Phase 2: Listen & iterate 🚧 ✅](#phase-2-listen--iterate--)
-      - [Phase 3: Let things settle](#phase-3-let-things-settle)
-          - [Bit A. Settle on examples. Put them in the roxygen skeleton
-            and readme. 🚧
-            ✅](#bit-a-settle-on-examples-put-them-in-the-roxygen-skeleton-and-readme--)
-          - [Bit B. Written formal tests of functions and save to test
-            that folders 🚧
-            ✅](#bit-b-written-formal-tests-of-functions-and-save-to-test-that-folders--)
-          - [Bit C. Added a description and author information in the
-            DESCRIPTION file 🚧
-            ✅](#bit-c-added-a-description-and-author-information-in-the-description-file--)
-          - [Bit D. Addressed *all* notes, warnings and errors. 🚧
-            ✅](#bit-d-addressed-all-notes-warnings-and-errors--)
-      - [Phase 4. Promote to wider
-        audience…](#phase-4-promote-to-wider-audience)
-          - [Bit A. Package website built? 🚧
-            ✅](#bit-a-package-website-built--)
-          - [Bit B. Package website deployed? 🚧
-            ✅](#bit-b-package-website-deployed--)
-      - [Phase 5: Harden/commit](#phase-5-hardencommit)
-          - [Submit to CRAN/RUniverse? 🚧 ✅](#submit-to-cranruniverse--)
+      - [Phase 3: Settling and testing 🚧
+        ✅](#phase-3-settling-and-testing--)
+      - [Phase 4. Promote to wider audience… 🚧
+        ✅](#phase-4-promote-to-wider-audience--)
+      - [Phase 5: Harden/commit: Submit to CRAN/RUniverse 🚧
+        ✅](#phase-5-hardencommit-submit-to-cranruniverse--)
   - [Appendix: Reports, Environment](#appendix-reports-environment)
-      - [Edit Description file](#edit-description-file)
-      - [Environment](#environment)
+      - [Description file complete? 🚧 ✅](#description-file-complete--)
+      - [Environment 🚧 ✅](#environment--)
       - [`devtools::check()` report](#devtoolscheck-report)
+      - [Package directory file tree](#package-directory-file-tree)
 
 # *To the reader*
 
@@ -126,14 +95,7 @@ times_two(4)
 devtools::create(".")
 ```
 
-### Bit B. Added roxygen skeleton? 🚧 ✅
-
-Use a roxygen skeleton for auto documentation and making sure proposed
-functions are *exported*. Generally, early on, I don’t do much
-(anything) in terms of filling in the skeleton for documentation,
-because things may change.
-
-### Bit C. Managed dependencies ? 🚧 ✅
+### Bit B. Managing [dependencies](https://r-pkgs.org/dependencies-in-practice.html)? 🚧 ✅
 
 Package dependencies managed, i.e. `depend::function()` in proposed
 functions and declared in the DESCRIPTION
@@ -142,65 +104,78 @@ functions and declared in the DESCRIPTION
 usethis::use_package("ggplot2")
 ```
 
-### Bit D. Moved functions R folder? 🚧 ✅
+### Bit C. Moved functions [R code folder](https://r-pkgs.org/code.html)? 🚧 ✅
 
 Use new {readme2pkg} function to do this from readme…
 
 ``` r
-readme2pkg::chunk_to_r("times_two")
+readme2pkg::chunk_to_r(chunk_name = "times_two")
 ```
 
-### Bit E. Run `devtools::check()` and addressed errors. 🚧 ✅
+### Bit D. Run [`devtools::check()`](https://r-pkgs.org/whole-game.html#check) and address errors. 🚧 ✅
 
 ``` r
 devtools::check(pkg = ".")
 ```
 
-### Bit F. Build package 🚧 ✅
+devtools check will document the functions for you.
+
+### Bit E. [Install](https://r-pkgs.org/whole-game.html#install) and restart package 🚧 ✅
 
 ``` r
-devtools::build()
+devtools::install(pkg = ".")
 ```
 
-### Bit G. Write traditional README that uses built package (also serves as a test of build. 🚧 ✅
+### Bit F. Write traditional README that uses built package (also serves as a test of build). 🚧 ✅
 
 The goal of the {xxxx} package is to …
 
 Install package with:
 
-    remotes::installgithub("EvaMaeRey/readme2pkg.template")
+    remotes::installgithub("GithubCoolUser/mypacakge")
 
 Once functions are exported you can remove go to two colons, and when
 things are are really finalized, then go without colons (and rearrange
 your readme…)
 
 ``` r
-library(mypacakge)  ##<< change to your package name here
-mypacakge:::times_two(10)
+library(mypackage)  ##<< change to your package name here
+mypackage:::times_two(10)
 ```
 
-### Bit H. Chosen a license? 🚧 ✅
-
-``` r
-usethis::use_mit_license()
-```
-
-### Bit I. Add lifecycle badge (experimental)
+### Bit G. Add [lifecycle badge](https://r-pkgs.org/lifecycle.html) (experimental) 🚧 ✅
 
 ``` r
 usethis::use_lifecycle_badge("experimental")
 ```
+
+### Bit H. Push to github.
 
 ## Phase 2: Listen & iterate 🚧 ✅
 
 Try to get feedback from experts on API, implementation, default
 decisions. Is there already work that solves this problem?
 
-## Phase 3: Let things settle
+## Phase 3: Settling and testing 🚧 ✅
 
-### Bit A. Settle on examples. Put them in the roxygen skeleton and readme. 🚧 ✅
+### Bit A. Added a description and author information in the [DESCRIPTION file](https://r-pkgs.org/description.html) 🚧 ✅
 
-### Bit B. Written formal tests of functions and save to test that folders 🚧 ✅
+### Bit B. Added [roxygen skeleton](https://r-pkgs.org/man.html)? 🚧 ✅
+
+Use a roxygen skeleton for auto documentation and making sure proposed
+functions are *exported*. (in RStudio ’Code -\> insert Roxygen Skeleton)
+Generally, early on, I don’t do much (anything) in terms of filling in
+the skeleton for documentation, because things may change.
+
+### Bit C. Chosen a [license](https://r-pkgs.org/license.html)? 🚧 ✅
+
+``` r
+usethis::use_mit_license()
+```
+
+### Bit D. Settle on [examples](https://r-pkgs.org/man.html#sec-man-examples). Put them in the roxygen skeleton and readme. 🚧 ✅
+
+### Bit E. Written formal [tests](https://r-pkgs.org/testing-basics.html) of functions and save to test that folders 🚧 ✅
 
 That would look like this…
 
@@ -218,29 +193,29 @@ test_that("calc times 2 works", {
 readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 ```
 
-### Bit C. Added a description and author information in the DESCRIPTION file 🚧 ✅
+### Bit F. Check again. Addressed notes, warnings and errors. 🚧 ✅
 
-### Bit D. Addressed *all* notes, warnings and errors. 🚧 ✅
+``` r
+devtools::check(pkg = ".")
+```
 
-## Phase 4. Promote to wider audience…
+## Phase 4. Promote to wider audience… 🚧 ✅
 
 ### Bit A. Package website built? 🚧 ✅
 
 ### Bit B. Package website deployed? 🚧 ✅
 
-## Phase 5: Harden/commit
-
-### Submit to CRAN/RUniverse? 🚧 ✅
+## Phase 5: Harden/commit: Submit to CRAN/RUniverse 🚧 ✅
 
 # Appendix: Reports, Environment
 
-## Edit Description file
+## Description file complete? 🚧 ✅
 
 ``` r
 readLines("DESCRIPTION")
 ```
 
-## Environment
+## Environment 🚧 ✅
 
 Here I just want to print the packages and the versions
 
@@ -260,7 +235,14 @@ all[11:17]
 
 ``` r
 devtools::check(pkg = ".")
-#> Error in `package_file()`:
-#> ! Could not find package root.
-#> ℹ Is '.' inside a package?
+```
+
+## Package directory file tree
+
+``` r
+fs::dir_tree(recurse = T)
+#> .
+#> ├── README.Rmd
+#> ├── README.md
+#> └── readme2pkg.template.Rproj
 ```

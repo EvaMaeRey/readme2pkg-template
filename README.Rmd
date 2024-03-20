@@ -2,7 +2,7 @@
 output: 
   github_document:
     toc: TRUE
-
+    toc_depth: 2
 ---
 
 
@@ -94,11 +94,8 @@ times_two(4)
 devtools::create(".")
 ```
 
-### Bit B. Added roxygen skeleton? 🚧 ✅
 
-Use a roxygen skeleton for auto documentation and making sure proposed functions are *exported*.  Generally, early on, I don't do much (anything) in terms of filling in the skeleton for documentation, because things may change.
-
-### Bit C. Managed dependencies ? 🚧 ✅
+### Bit B. Managing [dependencies](https://r-pkgs.org/dependencies-in-practice.html)? 🚧 ✅
 
 Package dependencies managed, i.e. `depend::function()` in proposed functions and declared in the DESCRIPTION
 
@@ -107,61 +104,60 @@ usethis::use_package("ggplot2")
 ```
 
 
-### Bit D. Moved functions R folder? 🚧 ✅
+### Bit C. Moved functions [R code folder](https://r-pkgs.org/code.html)? 🚧 ✅
 
 Use new {readme2pkg} function to do this from readme...
 
 ```{r, eval = F}
-readme2pkg::chunk_to_r("times_two")
+readme2pkg::chunk_to_r(chunk_name = "times_two")
 ```
 
 
 
-### Bit E. Run `devtools::check()` and addressed errors. 🚧 ✅
+### Bit D. Run [`devtools::check()`](https://r-pkgs.org/whole-game.html#check) and address errors. 🚧 ✅
 
 ```{r, eval = F}
 devtools::check(pkg = ".")
 ```
 
-### Bit F. Build package 🚧 ✅
+devtools check will document the functions for you. 
+
+### Bit E. [Install](https://r-pkgs.org/whole-game.html#install) and restart package 🚧 ✅
 
 ```{r, eval = F}
-devtools::build()
+devtools::install(pkg = ".")
 ```
 
 
-### Bit G. Write traditional README that uses built package (also serves as a test of build. 🚧 ✅ 
+### Bit F. Write traditional README that uses built package (also serves as a test of build). 🚧 ✅ 
 
 The goal of the {xxxx} package is to ...
 
 Install package with:
 
 ```
-remotes::installgithub("EvaMaeRey/readme2pkg.template")
+remotes::installgithub("GithubCoolUser/mypacakge")
 ```
 
 Once functions are exported you can remove go to two colons, and when things are are really finalized, then go without colons (and rearrange your readme...)
 
 ```{r, eval = F}
-library(mypacakge)  ##<< change to your package name here
-mypacakge:::times_two(10)
+library(mypackage)  ##<< change to your package name here
+mypackage:::times_two(10)
 ```
 
 
+### Bit G. Add [lifecycle badge](https://r-pkgs.org/lifecycle.html) (experimental) 🚧 ✅
 
-
-### Bit H. Chosen a license? 🚧 ✅
-
-
-```{r, eval = F}
-usethis::use_mit_license()
-```
-
-### Bit I. Add lifecycle badge (experimental)
 
 ```{r, eval = F}
 usethis::use_lifecycle_badge("experimental")
 ```
+
+
+### Bit H. Push to github.
+
+
 
 
 ## Phase 2: Listen & iterate 🚧 ✅
@@ -169,11 +165,26 @@ usethis::use_lifecycle_badge("experimental")
 Try to get feedback from experts on API, implementation, default decisions.  Is there already work that solves this problem? 
 
 
-## Phase 3: Let things settle
+## Phase 3: Settling and testing 🚧 ✅ 
 
-### Bit A. Settle on examples.  Put them in the roxygen skeleton and readme. 🚧 ✅
+### Bit A. Added a description and author information in the [DESCRIPTION file](https://r-pkgs.org/description.html) 🚧 ✅
 
-### Bit B. Written formal tests of functions and save to test that folders 🚧 ✅
+### Bit B. Added [roxygen skeleton](https://r-pkgs.org/man.html)? 🚧 ✅
+
+Use a roxygen skeleton for auto documentation and making sure proposed functions are *exported*. (in RStudio 'Code -> insert Roxygen Skeleton) Generally, early on, I don't do much (anything) in terms of filling in the skeleton for documentation, because things may change.
+
+
+### Bit C. Chosen a [license](https://r-pkgs.org/license.html)? 🚧 ✅
+
+
+```{r, eval = F}
+usethis::use_mit_license()
+```
+
+
+### Bit D. Settle on [examples](https://r-pkgs.org/man.html#sec-man-examples).  Put them in the roxygen skeleton and readme. 🚧 ✅
+
+### Bit E. Written formal [tests](https://r-pkgs.org/testing-basics.html) of functions and save to test that folders 🚧 ✅
 
 
 That would look like this...
@@ -194,29 +205,33 @@ readme2pkg::chunk_to_tests_testthat("test_calc_times_two_works")
 ```
 
 
-### Bit C. Added a description and author information in the DESCRIPTION file 🚧 ✅
 
-### Bit D. Addressed *all* notes, warnings and errors. 🚧 ✅
 
-## Phase 4. Promote to wider audience...
+### Bit F. Check again. Addressed notes, warnings and errors. 🚧 ✅
+
+
+```{r, eval = F}
+devtools::check(pkg = ".")
+```
+
+## Phase 4. Promote to wider audience...  🚧 ✅ 
 
 ### Bit A. Package website built? 🚧 ✅
 
+
 ### Bit B. Package website deployed? 🚧 ✅
 
-## Phase 5: Harden/commit
-
-### Submit to CRAN/RUniverse? 🚧 ✅
+## Phase 5: Harden/commit: Submit to CRAN/RUniverse 🚧 ✅ 
 
 # Appendix: Reports, Environment
 
-## Edit Description file
+## Description file complete?  🚧 ✅
 
 ```{r, eval = F}
 readLines("DESCRIPTION")
 ```
 
-## Environment
+## Environment  🚧 ✅
 
 Here I just want to print the packages and the versions
 
@@ -227,11 +242,15 @@ all[11:17]
 
 ## `devtools::check()` report
 
-```{r, error = T, results="hide", warning=F}
+```{r, eval=F, error = T, results="hide", warning=F}
 devtools::check(pkg = ".")
 ```
 
+## Package directory file tree
 
+```{r}
+fs::dir_tree(recurse = T)
+```
 
 
 
