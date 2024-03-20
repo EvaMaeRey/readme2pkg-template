@@ -158,7 +158,9 @@ mypackage:::times_two(10)
 usethis::use_lifecycle_badge("experimental")
 ```
 
-### Bit H. Push to github.
+### Bit H. Compile README.Rmd
+
+### Bit I. Push to github.
 
 RStudio: Console/Terminal/RMarkdown/Jobs:
 
