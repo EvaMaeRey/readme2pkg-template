@@ -97,8 +97,17 @@ devtools::create(".")
 
 ### Bit B. Managing [dependencies](https://r-pkgs.org/dependencies-in-practice.html)? 🚧 ✅
 
-Package dependencies managed, i.e. `depend::function()` in proposed
-functions and declared in the DESCRIPTION
+Dependencies must be declared in your package.
+
+This means …
+
+1.  you’ll use the `::` notation, e.g. `package::function()` in your
+    functions when you use another package’s functions (i.e. not base R
+    function).  
+2.  you’ll send package dependencies to your DESCRIPTION file; which can
+    be done automatically with `usethis::use_package`:
+
+<!-- end list -->
 
 ``` r
 usethis::use_package("ggplot2")
@@ -150,6 +159,10 @@ usethis::use_lifecycle_badge("experimental")
 ```
 
 ### Bit H. Push to github.
+
+RStudio: Console/Terminal/RMarkdown/Jobs:
+
+Terminal -\> git add . -\> git commit -m “first commit” -\> git push
 
 ## Phase 2: Listen & iterate 🚧 ✅
 
