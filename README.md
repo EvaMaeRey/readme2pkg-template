@@ -27,7 +27,8 @@ Welcome to the R package building helper *readme2pkg.template*\!
 
 Below, is a readme that provides steps for building a package. This
 readme acts as a worksheet, checklist, and control document as functions
-used in package building are included within.
+used in package building are included within and can be used in
+advancing development.
 
 We’ll use the `{readme2pkg}` helper package to send code chunks to
 different directories in the package.
