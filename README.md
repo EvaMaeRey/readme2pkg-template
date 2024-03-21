@@ -174,7 +174,7 @@ Terminal -\> git add . -\> git commit -m “first commit” -\> git push
 Try to get feedback from experts on API, implementation, default
 decisions, names. Is there already work that solves this problem?
 
-> “Hey Sam, I know you are an expert in multiplication methods. I was
+> “Hey Jordan, I know you are an expert in multiplication methods. I was
 > wondering if you’d have a look at the motivation and functionality in
 > my development {times.two} package found at
 > github.com/myusername/times.two”
