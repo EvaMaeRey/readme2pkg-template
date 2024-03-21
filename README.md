@@ -172,7 +172,17 @@ Terminal -\> git add . -\> git commit -m “first commit” -\> git push
 ## Phase 2: Listen & iterate 🚧 ✅
 
 Try to get feedback from experts on API, implementation, default
-decisions. Is there already work that solves this problem?
+decisions, names. Is there already work that solves this problem?
+
+> “Hey Sam, I know you are an expert in multiplication methods. I was
+> wondering if you’d have a look at the motivation and functionality in
+> my development {times.two} package found at
+> github.com/myusername/times.two”
+
+> “Hey Ella, I know you’ve done great worked on {times.three}. I think
+> my new project does something similar in terms API. I was wondering if
+> you’d have a look at the implementation. Code can be found in
+> github.com/myusername/times.two”
 
 ## Phase 3: Settling and testing 🚧 ✅
 
