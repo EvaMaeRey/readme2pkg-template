@@ -1,7 +1,8 @@
 
   - [*To the reader*](#to-the-reader)
   - [Part 0. Proposal](#part-0-proposal)
-  - [Part I. Work out functionality ✅](#part-i-work-out-functionality-)
+  - [Part I. Work out functionality 🚧
+    ✅](#part-i-work-out-functionality--)
       - [Try it out](#try-it-out)
   - [Part II. Packaging and documentation 🚧
     ✅](#part-ii-packaging-and-documentation--)
@@ -35,7 +36,7 @@ To install `{readme2pkg}`:
 
 ``` 
 
-remotes::install.github("EvaMaeRey/readme2pkg")
+remotes::install_github("EvaMaeRey/readme2pkg")
 ```
 
 # Part 0. Proposal
@@ -66,7 +67,7 @@ library(xxxxx)
 xxxxx::times_two(x = 4)
 ```
 
-# Part I. Work out functionality ✅
+# Part I. Work out functionality 🚧 ✅
 
 Here is a function that will do some work…
 
@@ -95,17 +96,18 @@ times_two(4)
 devtools::create(".")
 ```
 
-### Bit B. Managing [dependencies](https://r-pkgs.org/dependencies-in-practice.html)? 🚧 ✅
+### Bit B. Managing [dependencies](https://r-pkgs.org/dependencies-in-practice.html) if they exist 🚧 ✅
 
-Dependencies must be declared in your package.
+Dependencies – use of non-base R functions within your function – must
+be declared in your package.
 
 This means …
 
 1.  you’ll use the `::` notation, e.g. `package::function()` in your
-    functions when you use another package’s functions (i.e. not base R
-    function).  
-2.  you’ll send package dependencies to your DESCRIPTION file; which can
-    be done automatically with `usethis::use_package`:
+    functions when you use another package’s functions.  
+2.  you’ll document package dependencies to your DESCRIPTION file – this
+    can be done automatically with `usethis::use_package`, the example
+    is the case where ggplot2 is a dependency:
 
 <!-- end list -->
 
@@ -141,7 +143,7 @@ The goal of the {xxxx} package is to …
 
 Install package with:
 
-    remotes::installgithub("GithubCoolUser/mypacakge")
+    remotes::install_github("GithubCoolUser/mypacakge")
 
 Once functions are exported you can remove go to two colons, and when
 things are are really finalized, then go without colons (and rearrange
@@ -172,6 +174,10 @@ Try to get feedback from experts on API, implementation, default
 decisions. Is there already work that solves this problem?
 
 ## Phase 3: Settling and testing 🚧 ✅
+
+In this phase you should start settling on function and argument names,
+decide which ones will be exported, and make those functions more robust
+and usable with examples, tests, messages and warnings.
 
 ### Bit A. Added a description and author information in the [DESCRIPTION file](https://r-pkgs.org/description.html) 🚧 ✅
 
